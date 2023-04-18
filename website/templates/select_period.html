@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block title %}Select Perioada{% endblock %}
+{% block content %}
+<br />
+<br />
+<div class ="container">
+<div class="container-fluid" style="border:1px solid #808384; border-radius: 5px; padding: 25px;">
+    <form method = "POST">
+        <h3 align = "center">Selecteaza perioada</h3>
+        <div class = "form-group">
+            <label for="trans_start">Inceput</label>
+            <input type="date" class="form-control" id="trans_start" name="trans_start" placeholder="Introduceti data inceput"/>
+            <label for="trans_finish">Final</label>
+            <input type="date" class="form-control" id="trans_finish" name="trans_finish" placeholder="Introduceti data final"/>
+        </div>
+        <br />
+        <button type="submit" class = "btn btn-primary" style="width: 100%;">Submit</button>
+    </form>
+    </div>
+    <div class ="container">
+{% endblock %}

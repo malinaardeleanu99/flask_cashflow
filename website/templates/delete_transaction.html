@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Tranzactie{% endblock %}
+
+{% block content %}
+<br />
+<br />
+<div class ="container">
+<div class="container-fluid" style="border:1px solid #808384; border-radius: 5px; padding: 25px;">
+<form method = "POST">
+    <h5 align = "center">Delete tranzactie</h5>
+    <div class = "form-group">
+        <label for="trans_type">Sunteti sigur ca doriti sa stergeti tranzactia?</label>
+    </div>
+    <div class ="row">
+    <button type="submit" class = "btn btn-success" value ="da" style="width: 50%;" name ="da">Da</button>
+    <button type="submit" class = "btn btn-danger" value ="nu" style= "width: 50%" name="nu">Nu</button>
+    </div>
+</form>
+</div>
+</div>
+{% endblock %}
+
+

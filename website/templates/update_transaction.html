@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Update Tranzactie{% endblock %}
+
+{% block content %}
+<br />
+<br />
+<div class ="container">
+<div class="container-fluid" style="border:1px solid #808384; border-radius: 5px; padding: 25px;">
+<form method = "POST">
+    <h3 align = "center">Update Tranzactie</h3>
+    <div class = "form-group">
+        <label for="trans_type">Tip</label>
+        <input type="text" class="form-control" value= "{{trans_type}}" id="trans_type" name="trans_type" disabled/>
+        <label for="trans_partener">Partener</label>
+        <input type="text" class="form-control" value= "{{trans_partener}}" id="trans_partener" name="trans_partener" disabled/>
+        <label for="trans_sum">Suma</label>
+        <input type="number" class="form-control" value= "{{trans_sum}}" id="trans_sum" name="trans_sum" placeholder="Introduceti suma"/>
+        <label for="trans_date">Data</label>
+        <input type="date" class="form-control" value= "{{trans_date}}" id="trans_date" name="trans_date" placeholder="Introduceti data"/>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Completed" name="check_status" id="check_status">
+        <label class="form-check-label" for="check_status">
+          Completed
+        </label>
+      </div>
+    <br />
+    <div class ="row">
+    <button type="submit" class = "btn btn-warning" style="width: 100%;">Update</button>
+    <a class="link text-danger" id="home" href="/delete/{{trans_id}}">Delete</a>
+    </div>
+</form>
+</div>
+</div>
+{% endblock %}
+
+

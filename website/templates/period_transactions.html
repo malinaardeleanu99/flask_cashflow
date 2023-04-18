@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Tranzactii perioada{% endblock %}
+{% block content %}
+<div class="col-12 mb-3 mb-lg-5">
+    <div class="position-relative card table-nowrap table-card">
+       <div class="card-header align-items-center">
+          <h5 class="mb-0">Tranzactii</h5>
+          <p class="mb-0 small text-muted">{{no_pending}} Pending</p>
+       </div>
+       <div class="table-responsive">
+          <table class="table mb-0 table-hover" stle = "width: 100%;">
+             <thead class="small text-uppercase bg-body text-muted">
+                <tr>
+                   <th>Data</th>
+                   <th>ID</th>
+                   <th>Partener</th>
+                   <th>Valoare</th>
+                   <th>Status</th>
+                </tr>
+             </thead>
+             <tbody>
+                {% for trans in transactions %}
+                <tr data-pk="{{ trans.id }}" class="align-middle">
+                   <td> {{trans.trans_date}} </td>
+                   <td> {{trans.id}} </td>
+                   <td>{{trans.trans_partener}}</td>
+                   {%if trans.trans_type == 'PLATA'%}
+                   <td>
+                      <div class="d-flex align-items-center">
+                         <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+                         <span>{{trans.trans_sum}}</span>
+                      </div>
+                   </td>
+                   {% else %}
+                   <td>
+                      <div class="d-flex align-items-center">
+                         <span><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+                         <span>{{trans.trans_sum}}</span>
+                      </div>
+                   </td>
+                   {% endif %}
+                   {% if trans.trans_status == 'Pending' %}
+                   <td>
+                      <span class="badge fs-6 fw-normal bg-tint-success text-warning">{{trans.trans_status}}</span>
+                   </td>
+                   {% else %}
+                   <td>
+                      <span class="badge fs-6 fw-normal bg-tint-success text-success">{{trans.trans_status}}</span>
+                   </td>
+                   {% endif %}
+                </tr>
+                {% endfor %}
+             </tbody>
+          </table>
+       </div>
+       <div class="card-footer text-end">
+         <form method="POST">
+            <button type="submit" class = "btn btn-primary" value ="download" name="excel">Download excel</button>
+        </form>
+      </div>  
+    </div>
+ </div>
+ {% endblock %}
+ {% block javascript %}
+<script type="text/javascript">
+   $(document).ready(function(){
+     $('table tr').click(function(){
+       window.location = "/update/" + $(this).data('pk');
+       return false;
+     });
+   });
+ </script>
+ {% endblock %}
